@@ -1,0 +1,52 @@
+[package]
+    edition="2024"
+    name="fastq-peekaboo"
+    version="0.1.0"
+
+[dependencies]
+    memchr="2.8.0"
+    memmap2="0.9.10"
+    thiserror="2.0.18"
+
+    [dependencies.clap]
+        default-features=false
+        features=[
+            # "debug",
+            "cargo",
+            "color",
+            "deprecated",
+            "derive",
+            "env",
+            "error-context",
+            "help",
+            "std",
+            "string",
+            "suggestions",
+            "unicode",
+            "usage",
+        ]
+        version="4.6.1"
+
+[profile.dev] # ────────────────────────────────────────────────────────────────
+    codegen-units=6       # 256
+    debug=true            # true
+    debug-assertions=true # true
+    incremental=true      # true
+    lto=false             # false
+    opt-level=1           # 1
+    overflow-checks=true  # true
+    panic="abort"         # "unwind"
+    rpath=false           # false
+    strip=false           # false
+
+[profile.release] # ────────────────────────────────────────────────────────────
+    codegen-units=1        # 16
+    debug=false            # false
+    debug-assertions=false # false
+    incremental=false      # false
+    lto=true               # false
+    opt-level=3            # 3
+    overflow-checks=true   # false
+    panic="abort"          # "unwind"
+    rpath=false            # false
+    strip=true             # "none"
