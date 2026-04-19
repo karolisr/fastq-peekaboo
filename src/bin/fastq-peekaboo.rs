@@ -27,11 +27,11 @@ struct Args {
     #[arg(short = '2', long)]
     r2: Option<PathBuf>,
 
-    /// Print the total number of records
+    /// Print the total number of reads
     #[arg(short, long)]
     count: bool,
 
-    /// Fetch record at this 0-based index
+    /// Fetch a read at this 0-based index
     #[arg(short, long)]
     index: Option<usize>,
 
@@ -70,8 +70,8 @@ fn main() -> Result<(), Error> {
             Some(rec) => write_fastq_record_raw(&mut out, rec)?,
             None => {
                 eprintln!(
-                    "Record index {i} out of range (file has {} records)",
-                    fq.read_count_1()
+                    "Record index {i} out of range (valid range: [0,{}])",
+                    fq.read_count_1() - 1
                 );
             }
         }
