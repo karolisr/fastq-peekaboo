@@ -24,15 +24,15 @@ struct Args {
     r1: PathBuf,
 
     /// Read 2 FASTQ file path (for paired-end data)
-    #[arg(short = '2', long, requires = "r1")]
+    #[arg(short = '2', long)]
     r2: Option<PathBuf>,
 
     /// Print the total number of records
-    #[arg(short, long, exclusive = true)]
+    #[arg(short, long)]
     count: bool,
 
     /// Fetch record at this 0-based index
-    #[arg(short, long, exclusive = true)]
+    #[arg(short, long)]
     index: Option<usize>,
 
     /// Start of range to fetch (0-based, inclusive; requires --end)
